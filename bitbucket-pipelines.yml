@@ -1,0 +1,20 @@
+#image: hashicorp/terraform:full
+pipelines:
+    branches:
+        main:
+            - step:
+                image: openjdk:8-jdk-alpine
+                script:
+                    - docker login -u $DOCKER_HUB_ID -p $DOCKER_HUB_PASSWORD
+                    - docker build -t rezamerdeka/stockbit:latest .
+                    - docker push rezamerdeka/stockbit:latest
+                services:
+                    - docker
+            - step:
+                image: hashicorp/terraform:full
+                script:
+                    - cd terraform
+                    - terraform init
+                    - terraform validate
+                    - terraform plan
+                    - terraform apply -input=false -auto-approve
