@@ -26,9 +26,9 @@ Answer for question point 2
 - Docker = lightweight service
 - Mysql = flexible
 
-##Database Cluster
+##Database Cluster##
 Database replication using AWS RDS cluster would be better for availabilty and performance also create read write node
 If using multizone, create different subnet between zone, and connect using vpc peering
 
-##Security Groups
+##Security Groups##
 Use whitelist IP for intranet/privat transaction
