@@ -3,22 +3,6 @@ provider "aws" {
         shared_credentials_file = "/home/ubuntu/.aws/credentials"
 }
 
-#resource "aws_s3_bucket" "this" {
-#  bucket                               = "${var.bucket_name}"
-#  acl                                  = "${var.acl_value}"
-#  force_destroy                        = "${var.force_destroy}"
-#  tags                                 = "${merge(var.tags, map("Name", format("%s", var.bucket_name)))}"
-#}
-
-#resource "aws_s3_bucket_object" "object" {
-#  bucket = aws_s3_bucket.this.id
-#  key    = "docker-compose.yml"
-#  acl    = "private"
-#  source = "../docker-compose.yml"
-#  etag = filemd5("../docker-compose.yml")
-#}
-
-
 resource "aws_instance" "ec2" {
   ami           = "${var.ami}"
   instance_type = "${var.type}"
